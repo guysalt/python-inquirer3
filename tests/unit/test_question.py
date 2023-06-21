@@ -3,8 +3,8 @@ import shutil
 import tempfile
 import unittest
 
-from inquirer import errors
-from inquirer import questions
+from inquirer3 import errors
+from inquirer3 import questions
 
 
 class BaseQuestionTests(unittest.TestCase):

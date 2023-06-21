@@ -1,11 +1,11 @@
-# inquirer.render.console package
+# inquirer3.render.console package
 
 ## Submodules
 
-## inquirer.render.console.base module
+## inquirer3.render.console.base module
 
 ```{eval-rst}
-.. automodule:: inquirer.render.console.base
+.. automodule:: inquirer3.render.console.base
     :members:
     :undoc-members:
     :show-inheritance:
@@ -15,7 +15,7 @@
 ## Module contents
 
 ```{eval-rst}
-.. automodule:: inquirer.render.console
+.. automodule:: inquirer3.render.console
     :members:
     :undoc-members:
     :show-inheritance:

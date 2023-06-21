@@ -99,12 +99,12 @@ This will allow a chance to talk it over with the owners and validate your appro
 <!-- github-only -->
 
 [code of conduct]: CODE_OF_CONDUCT.md
-[documentation]: https://magmax.org/python-inquirer/
-[issue tracker]: https://github.com/magmax/python-inquirer/issues
+[documentation]: https://python-inquirer3.readthedocs.io/en/latest/
+[issue tracker]: https://github.com/guysalt/python-inquirer3/issues
 [mit license]: https://opensource.org/licenses/MIT
 [nox]: https://nox.thea.codes/
 [nox-poetry]: https://nox-poetry.readthedocs.io/
 [poetry]: https://python-poetry.org/
-[pull request]: https://github.com/magmax/python-inquirer/pulls
+[pull request]: https://github.com/guysalt/python-inquirer3/pulls
 [pytest]: https://pytest.readthedocs.io/
-[source code]: https://github.com/magmax/python-inquirer
+[source code]: https://github.com/guysalt/python-inquirer3

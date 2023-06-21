@@ -131,14 +131,15 @@ inside the validation function, but be aware that if the validation passes you s
 Example:
 
 ```python
-from inquirer import errors
+from inquirer3 import errors
 import random
 
-def validation_function(answers, current):
-   if random.random() > 0.5:
-      raise errors.ValidationError('', reason='Sorry, just have bad mood.')
 
-   return True
+def validation_function(answers, current):
+  if random.random() > 0.5:
+    raise errors.ValidationError('', reason='Sorry, just have bad mood.')
+
+  return True
 
 
 Text('nothing', "Moody question", validate=validation_function)

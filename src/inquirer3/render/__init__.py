@@ -1,4 +1,4 @@
-from inquirer.render.console import ConsoleRender
+from inquirer3.render.console import ConsoleRender
 
 
 try:

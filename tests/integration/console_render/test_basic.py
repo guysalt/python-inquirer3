@@ -1,9 +1,9 @@
 import unittest
 
-import inquirer.errors as errors
-import inquirer.questions as questions
+import inquirer3.errors as errors
+import inquirer3.questions as questions
 import tests.integration.console_render.helper as helper
-from inquirer.render import ConsoleRender
+from inquirer3.render import ConsoleRender
 
 
 class BasicTest(unittest.TestCase, helper.BaseTestCase):
