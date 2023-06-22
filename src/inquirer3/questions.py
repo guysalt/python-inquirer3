@@ -6,8 +6,8 @@ import json
 import os
 import sys
 
-import inquirer.errors as errors
-from inquirer.render.console._other import GLOBAL_OTHER_CHOICE
+import inquirer3.errors as errors
+from inquirer3.render.console._other import GLOBAL_OTHER_CHOICE
 
 
 class TaggedValue:

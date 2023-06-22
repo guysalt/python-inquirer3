@@ -1,8 +1,8 @@
 import editor
 from readchar import key
 
-from inquirer import errors
-from inquirer.render.console.base import BaseConsoleRender
+from inquirer3 import errors
+from inquirer3.render.console.base import BaseConsoleRender
 
 
 class Editor(BaseConsoleRender):

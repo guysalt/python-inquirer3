@@ -1,10 +1,10 @@
 from readchar import key
 
-from inquirer import errors
-from inquirer.render.console._other import GLOBAL_OTHER_CHOICE
-from inquirer.render.console.base import MAX_OPTIONS_DISPLAYED_AT_ONCE
-from inquirer.render.console.base import BaseConsoleRender
-from inquirer.render.console.base import half_options
+from inquirer3 import errors
+from inquirer3.render.console._other import GLOBAL_OTHER_CHOICE
+from inquirer3.render.console.base import MAX_OPTIONS_DISPLAYED_AT_ONCE
+from inquirer3.render.console.base import BaseConsoleRender
+from inquirer3.render.console.base import half_options
 
 
 class List(BaseConsoleRender):
@@ -74,7 +74,7 @@ class List(BaseConsoleRender):
             if value == GLOBAL_OTHER_CHOICE:
                 value = self.other_input()
                 if not value:
-                    # Clear the print inquirer.text made, since the user didn't enter anything
+                    # Clear the print inquirer3.text made, since the user didn't enter anything
                     print(self.terminal.move_up + self.terminal.clear_eol, end="")
                     return
 

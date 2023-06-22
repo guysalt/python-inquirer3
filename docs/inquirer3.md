@@ -1,62 +1,62 @@
-# inquirer package
+# inquirer3 package
 
 ## Subpackages
 
 ```{toctree}
-inquirer.render
+inquirer3.render
 ```
 
 ## Submodules
 
-## inquirer.errors module
+## inquirer3.errors module
 
 ```{eval-rst}
-.. automodule:: inquirer.errors
+.. automodule:: inquirer3.errors
     :members:
     :undoc-members:
     :show-inheritance:
 ```
 
-## inquirer.events module
+## inquirer3.events module
 
 ```{eval-rst}
-.. automodule:: inquirer.events
+.. automodule:: inquirer3.events
     :members:
     :undoc-members:
     :show-inheritance:
 ```
 
-## inquirer.prompt module
+## inquirer3.prompt module
 
 ```{eval-rst}
-.. automodule:: inquirer.prompt
+.. automodule:: inquirer3.prompt
     :members:
     :undoc-members:
     :show-inheritance:
 ```
 
-## inquirer.questions module
+## inquirer3.questions module
 
 ```{eval-rst}
-.. automodule:: inquirer.questions
+.. automodule:: inquirer3.questions
     :members:
     :undoc-members:
     :show-inheritance:
 ```
 
-## inquirer.shortcuts module
+## inquirer3.shortcuts module
 
 ```{eval-rst}
-.. automodule:: inquirer.shortcuts
+.. automodule:: inquirer3.shortcuts
     :members:
     :undoc-members:
     :show-inheritance:
 ```
 
-## inquirer.themes module
+## inquirer3.themes module
 
 ```{eval-rst}
-.. automodule:: inquirer.themes
+.. automodule:: inquirer3.themes
     :members:
     :undoc-members:
     :show-inheritance:

@@ -4,15 +4,15 @@ from pprint import pprint
 
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer3  # noqa
 
 
 questions = [
-    inquirer.Editor(
+    inquirer3.Editor(
         "poem", message="Write me a poem please", default="Roses are red,", validate=lambda _, x: x.count("\n") >= 2
     ),
 ]
 
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 
 pprint(answers)

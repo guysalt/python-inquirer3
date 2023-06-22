@@ -3,7 +3,7 @@ import json
 
 from blessed import Terminal
 
-import inquirer.errors as errors
+import inquirer3.errors as errors
 
 
 term = Terminal()

@@ -4,17 +4,17 @@ from pprint import pprint
 
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer3  # noqa
 
 
 LangQuestion = [
-    inquirer.List(
+    inquirer3.List(
         "lang",
         message="Select Language",
         choices=["English", "Français", "Deutsch", "Español"],
     ),
 ]
 
-answers = inquirer.prompt(LangQuestion)
+answers = inquirer3.prompt(LangQuestion)
 
 pprint(answers)

@@ -3,10 +3,10 @@ import unittest
 
 from readchar import key
 
-import inquirer.questions as questions
+import inquirer3.questions as questions
 import tests.integration.console_render.helper as helper
-from inquirer import errors
-from inquirer.render import ConsoleRender
+from inquirer3 import errors
+from inquirer3.render import ConsoleRender
 
 
 class TextRenderTest(unittest.TestCase, helper.BaseTestCase):
