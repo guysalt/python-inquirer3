@@ -3,9 +3,9 @@ import unittest
 import pytest
 from readchar import key
 
-import inquirer.questions as questions
+import inquirer3.questions as questions
 import tests.integration.console_render.helper as helper
-from inquirer.render import ConsoleRender
+from inquirer3.render import ConsoleRender
 
 
 class ListRenderTest(unittest.TestCase, helper.BaseTestCase):

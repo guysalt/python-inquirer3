@@ -6,7 +6,7 @@ try:
 except ImportError:
     from io import StringIO
 
-from inquirer import events
+from inquirer3 import events
 
 
 class Iterable:

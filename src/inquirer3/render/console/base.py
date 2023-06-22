@@ -1,6 +1,6 @@
 from blessed import Terminal
 
-import inquirer
+import inquirer3
 
 
 # Should be odd number as there is always one question selected
@@ -20,7 +20,7 @@ class BaseConsoleRender:
         self.show_default = show_default
 
     def other_input(self):
-        other = inquirer.text(self.question.message, autocomplete=self.question.autocomplete)
+        other = inquirer3.text(self.question.message, autocomplete=self.question.autocomplete)
         return other
 
     def get_header(self):

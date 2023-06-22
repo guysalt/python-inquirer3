@@ -3,7 +3,7 @@
 To install it, just execute:
 
 ```bash
-pip install inquirer
+pip install inquirer3
 ```
 
 Usage example:

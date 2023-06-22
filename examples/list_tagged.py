@@ -4,11 +4,11 @@ from pprint import pprint
 
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer3  # noqa
 
 
 questions = [
-    inquirer.List(
+    inquirer3.List(
         "size",
         message="What size do you need?",
         choices=[
@@ -22,6 +22,6 @@ questions = [
     ),
 ]
 
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 
 pprint(answers)

@@ -4,7 +4,7 @@ from pprint import pprint
 
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer3  # noqa
 
 
 def initials(answers):
@@ -12,12 +12,12 @@ def initials(answers):
 
 
 questions = [
-    inquirer.Text("name", message="What's your name?"),
-    inquirer.Text("surname", message="{name}, what's your surname?"),
-    inquirer.Text("alias", message="What's your Alias, {name}?", default="{surname}"),
-    inquirer.Confirm("initials", message=initials, default=True),
+    inquirer3.Text("name", message="What's your name?"),
+    inquirer3.Text("surname", message="{name}, what's your surname?"),
+    inquirer3.Text("alias", message="What's your Alias, {name}?", default="{surname}"),
+    inquirer3.Confirm("initials", message=initials, default=True),
 ]
 
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 
 pprint(answers)

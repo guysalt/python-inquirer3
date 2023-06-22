@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
-import inquirer
+import inquirer3
 
 
 @pytest.fixture()
@@ -14,7 +14,7 @@ def render_mock_raise_keyboard():
 
 
 def test_prompt_returns_a_hash():
-    answers = inquirer.prompt([])
+    answers = inquirer3.prompt([])
     assert answers == {}
 
 
@@ -27,7 +27,7 @@ def test_prompt_renders_a_questions():
 
 
 def test_print(capsys, render_mock_raise_keyboard):
-    inquirer.prompt([MagicMock()], render=render_mock_raise_keyboard)
+    inquirer3.prompt([MagicMock()], render=render_mock_raise_keyboard)
     out, _ = capsys.readouterr()
 
     assert "Cancelled by user" in out.rstrip().lstrip()
@@ -35,4 +35,4 @@ def test_print(capsys, render_mock_raise_keyboard):
 
 def test_raise_keyboard(render_mock_raise_keyboard):
     with pytest.raises(KeyboardInterrupt):
-        inquirer.prompt([MagicMock()], render=render_mock_raise_keyboard, raise_keyboard_interrupt=True)
+        inquirer3.prompt([MagicMock()], render=render_mock_raise_keyboard, raise_keyboard_interrupt=True)

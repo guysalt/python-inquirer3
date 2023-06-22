@@ -1,5 +1,5 @@
-import inquirer.questions as questions
-from inquirer.render.console import ConsoleRender
+import inquirer3.questions as questions
+from inquirer3.render.console import ConsoleRender
 
 
 def text(message, autocomplete=None, render=None, **kwargs):

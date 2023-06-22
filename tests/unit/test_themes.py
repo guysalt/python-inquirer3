@@ -3,8 +3,8 @@ import unittest
 
 from blessed import Terminal
 
-from inquirer import errors
-from inquirer import themes
+from inquirer3 import errors
+from inquirer3 import themes
 
 
 class ThemeTests(unittest.TestCase):

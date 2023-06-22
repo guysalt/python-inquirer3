@@ -1,31 +1,31 @@
-import inquirer
+import inquirer3
 
 
 if __name__ == "__main__":
 
     questions = [
-        inquirer.Text("user", message="Please enter your github username", validate=lambda _, x: x != "."),
-        inquirer.Password("password", message="Please enter your password"),
-        inquirer.Text("repo", message="Please enter the repo name", default="default"),
-        inquirer.Checkbox(
+        inquirer3.Text("user", message="Please enter your github username", validate=lambda _, x: x != "."),
+        inquirer3.Password("password", message="Please enter your password"),
+        inquirer3.Text("repo", message="Please enter the repo name", default="default"),
+        inquirer3.Checkbox(
             "topics",
             message="Please define your type of project?",
             choices=["common", "backend", "frontend"],
         ),
-        inquirer.Text(
+        inquirer3.Text(
             "organization",
             message=(
                 "If this is a repo from a organization please enter the organization name,"
                 " if not just leave this blank"
             ),
         ),
-        inquirer.Confirm(
+        inquirer3.Confirm(
             "correct",
             message="This will delete all your current labels and create a new ones. Continue?",
             default=False,
         ),
     ]
 
-    answers = inquirer.prompt(questions)
+    answers = inquirer3.prompt(questions)
 
     print(answers)
