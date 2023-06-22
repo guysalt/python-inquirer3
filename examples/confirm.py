@@ -4,14 +4,14 @@ from pprint import pprint
 
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer3  # noqa
 
 
 questions = [
-    inquirer.Confirm("continue", message="Should I continue"),
-    inquirer.Confirm("stop", message="Should I stop", default=True),
+    inquirer3.Confirm("continue", message="Should I continue"),
+    inquirer3.Confirm("stop", message="Should I stop", default=True),
 ]
 
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 
 pprint(answers)

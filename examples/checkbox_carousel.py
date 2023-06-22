@@ -4,11 +4,11 @@ from pprint import pprint
 
 
 sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+import inquirer3  # noqa
 
 
 questions = [
-    inquirer.Checkbox(
+    inquirer3.Checkbox(
         "interests",
         message="What are you interested in?",
         choices=["Computers", "Books", "Science", "Nature", "Fantasy", "History"],
@@ -17,6 +17,6 @@ questions = [
     ),
 ]
 
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 
 pprint(answers)

@@ -1,22 +1,22 @@
-[![PyPI](https://img.shields.io/pypi/v/inquirer.svg)][pypi status]
-[![Status](https://img.shields.io/pypi/status/inquirer.svg)][pypi status]
-[![Python Version](https://img.shields.io/pypi/pyversions/inquirer)][pypi status]
-[![License](https://img.shields.io/pypi/l/inquirer)][license]
+[![PyPI](https://img.shields.io/pypi/v/inquirer3.svg)][pypi status]
+[![Status](https://img.shields.io/pypi/status/inquirer3.svg)][pypi status]
+[![Python Version](https://img.shields.io/pypi/pyversions/inquirer3.svg)][pypi status]
+[![License](https://img.shields.io/pypi/l/inquirer3.svg)][license]
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
 <br>
-[![Read the documentation at https://python-inquirer.readthedocs.io/](https://img.shields.io/readthedocs/python-inquirer/latest.svg?label=Read%20the%20Docs)][read the docs]
-[![Tests](https://github.com/magmax/python-inquirer/workflows/Tests/badge.svg)][tests]
-[![Codecov](https://codecov.io/gh/magmax/python-inquirer/branch/main/graph/badge.svg)][codecov]
+[![Read the documentation at https://python-inquirer3.readthedocs.io/](https://img.shields.io/readthedocs/python-inquirer/latest.svg?label=Read%20the%20Docs)][read the docs]
+[![Tests](https://github.com/guysalt/python-inquirer3/workflows/Tests/badge.svg)][tests]
+[![Codecov](https://codecov.io/gh/guysalt/python-inquirer3/branch/main/graph/badge.svg)][codecov]
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
 
-[pypi status]: https://pypi.org/project/inquirer/
-[read the docs]: https://python-inquirer.readthedocs.io/
-[tests]: https://github.com/magmax/python-inquirer/actions?workflow=Tests
-[codecov]: https://app.codecov.io/gh/magmax/python-inquirer
+[pypi status]: https://pypi.org/project/inquirer3/
+[read the docs]: https://python-inquirer3.readthedocs.io/
+[tests]: https://github.com/guysalt/python-inquirer3/actions?workflow=Tests
+[codecov]: https://app.codecov.io/gh/guysalt/python-inquirer3
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black
 
-# python-inquirer
+# python-inquirer3
 
 Collection of common interactive command line user interfaces, based on [Inquirer.js].
 
@@ -35,29 +35,26 @@ Python-inquirer supports mainly UNIX-based platforms (eq. Mac OS, Linux, etc.). 
 ## Installation
 
 ```sh
-pip install inquirer
+pip install inquirer3
 ```
 
 ## Documentation
-
-Documentation has been moved to [magmax.org/python-inquirer](https://magmax.org/python-inquirer/).
-
-But here you have a couple of usage examples:
 
 ### Text
 
 ```python
 import re
 
-import inquirer
+import inquirer3
+
 questions = [
-  inquirer.Text('name', message="What's your name"),
-  inquirer.Text('surname', message="What's your surname"),
-  inquirer.Text('phone', message="What's your phone number",
-                validate=lambda _, x: re.match('\+?\d[\d ]+\d', x),
-                )
+    inquirer3.Text('name', message="What's your name"),
+    inquirer3.Text('surname', message="What's your surname"),
+    inquirer3.Text('phone', message="What's your phone number",
+                   validate=lambda _, x: re.match('\+?\d[\d ]+\d', x),
+                   )
 ]
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 ```
 
 ### Editor
@@ -71,11 +68,12 @@ External editor handling is done using great library [python-editor](https://git
 Example:
 
 ```python
-import inquirer
+import inquirer3
+
 questions = [
-  inquirer.Editor('long_text', message="Provide long text")
+    inquirer3.Editor('long_text', message="Provide long text")
 ]
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 ```
 
 ### List
@@ -85,14 +83,15 @@ Shows a list of choices, and allows the selection of one of them.
 Example:
 
 ```python
-import inquirer
+import inquirer3
+
 questions = [
-  inquirer.List('size',
-                message="What size do you need?",
-                choices=['Jumbo', 'Large', 'Standard', 'Medium', 'Small', 'Micro'],
-            ),
+    inquirer3.List('size',
+                   message="What size do you need?",
+                   choices=['Jumbo', 'Large', 'Standard', 'Medium', 'Small', 'Micro'],
+                   ),
 ]
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 ```
 
 List questions can take one extra argument `carousel=False`. If set to true, the answers will rotate (back to first when pressing down on last choice, and down to last choice when pressing up on first choice)
@@ -104,14 +103,15 @@ Shows a list of choices, with multiple selection.
 Example:
 
 ```python
-import inquirer
+import inquirer3
+
 questions = [
-  inquirer.Checkbox('interests',
-                    message="What are you interested in?",
-                    choices=['Computers', 'Books', 'Science', 'Nature', 'Fantasy', 'History'],
-                    ),
+    inquirer3.Checkbox('interests',
+                       message="What are you interested in?",
+                       choices=['Computers', 'Books', 'Science', 'Nature', 'Fantasy', 'History'],
+                       ),
 ]
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 ```
 
 Checkbox questions can take extra argument `carousel=False`. If set to true, the answers will rotate (back to first when pressing down on last choice, and down to last choice when pressing up on first choice)
@@ -125,14 +125,15 @@ Like Text question, but with builtin validations for working with paths.
 Example:
 
 ```python
-import inquirer
+import inquirer3
+
 questions = [
-  inquirer.Path('log_file',
-                 message="Where logs should be located?",
-                 path_type=inquirer.Path.DIRECTORY,
-                ),
+    inquirer3.Path('log_file',
+                   message="Where logs should be located?",
+                   path_type=inquirer3.Path.DIRECTORY,
+                   ),
 ]
-answers = inquirer.prompt(questions)
+answers = inquirer3.prompt(questions)
 ```
 
 ## Contributing
@@ -148,11 +149,11 @@ Distributed under the terms of the [MIT license][license].
 
 <!-- github-only -->
 
-[license]: https://github.com/magmax/python-inquirer/blob/main/LICENSE
+[license]: https://github.com/guysalt/python-inquirer3/blob/main/LICENSE
 [@magmax_en]: https://twitter.com/magmax_en
 [@vaxilart]: https://twitter.com/vaxilart
 [contributor guide]: CONTRIBUTING.md
-[download the python-inquirer code from github]: https://github.com/magmax/python-inquirer
-[download the wheel from pypi]: https://pypi.python.org/pypi/inquirer
-[examples/]: https://github.com/magmax/python-inquirer/tree/master/examples
+[download the python-inquirer code from github]: https://github.com/guysalt/python-inquirer3
+[download the wheel from pypi]: https://pypi.python.org/pypi/inquirer3
+[examples/]: https://github.com/guysalt/python-inquirer3/tree/master/examples
 [inquirer.js]: https://github.com/SBoudrias/Inquirer.js

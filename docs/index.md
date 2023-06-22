@@ -28,5 +28,5 @@ modules
 - {ref}`modindex`
 
 [contributor guide]: contributing.html
-[download the code from github]: https://github.com/magmax/python-inquirer
+[download the code from github]: https://github.com/guysalt/python-inquirer3
 [inquirer.js]: https://github.com/SBoudrias/Inquirer.js
