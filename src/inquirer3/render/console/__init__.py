@@ -1,3 +1,4 @@
+import math
 import sys
 
 from blessed import Terminal
@@ -32,8 +33,6 @@ class ConsoleRender:
         clazz = self.render_factory(question.kind)
         render = clazz(question, terminal=self.terminal, theme=self._theme, show_default=question.show_default)
 
-        self.clear_eos()
-
         try:
             return self._event_loop(render)
         finally:
@@ -42,19 +41,18 @@ class ConsoleRender:
     def _event_loop(self, render):
         try:
             while True:
-                self._relocate()
-                self._print_status_bar(render)
+                self._relocate_and_clear()
+                self._print_status_bar()
 
                 self._print_header(render)
                 self._print_options(render)
 
                 self._process_input(render)
-                self._force_initial_column()
         except errors.EndOfInput as e:
             self._go_to_end(render)
             return e.selection
 
-    def _print_status_bar(self, render):
+    def _print_status_bar(self):
         if self._previous_error is None:
             self.clear_bottombar()
             return
@@ -77,14 +75,12 @@ class ConsoleRender:
         )
         show_default = render.question.default and render.show_default
         header += default_value if show_default else ""
-        msg_template = (
-            "{t.move_up}{t.clear_eol}{tq.brackets_color}[" "{tq.mark_color}?{tq.brackets_color}]{t.normal} {msg}"
-        )
+        msg_template = "{tq.brackets_color}[{tq.mark_color}?{tq.brackets_color}]{t.normal} {msg}"
 
         # ensure any user input with { or } will not cause a formatting error
         escaped_current_value = str(render.get_current_value()).replace("{", "{{").replace("}", "}}")
         self.print_str(
-            f"\n{msg_template}: {escaped_current_value}",
+            f"{msg_template}: {escaped_current_value}",
             msg=header,
             lf=not render.title_inline,
             tq=self._theme.Question,
@@ -104,9 +100,9 @@ class ConsoleRender:
             except errors.ValidationError as e:
                 self._previous_error = render.handle_validation_error(e)
 
-    def _relocate(self):
-        print(self._position * self.terminal.move_up, end="")
-        self._force_initial_column()
+    def _relocate_and_clear(self):
+        print("\r" + self._position * self.terminal.move_up, end="")
+        self.clear_eos()
         self._position = 0
 
     def _go_to_end(self, render):
@@ -114,9 +110,6 @@ class ConsoleRender:
         if positions > 0:
             print(self._position * self.terminal.move_down, end="")
         self._position = 0
-
-    def _force_initial_column(self):
-        self.print_str("\r")
 
     def render_error(self, message):
         if message:
@@ -139,7 +132,8 @@ class ConsoleRender:
         with self.terminal.location(0, self.height - 2):
             self.clear_eos()
 
-    def render_factory(self, question_type):
+    @staticmethod
+    def render_factory(question_type):
         matrix = {
             "text": Text,
             "editor": Editor,
@@ -155,17 +149,19 @@ class ConsoleRender:
         return matrix.get(question_type)
 
     def print_line(self, base, lf=True, **kwargs):
-        self.print_str(base + self.terminal.clear_eol(), lf=lf, **kwargs)
+        self.print_str(base, lf=lf, **kwargs)
 
     def print_str(self, base, lf=False, **kwargs):
+        msg = base.format(t=self.terminal, **kwargs)
+        print(msg, end="\n" if lf else "")
+        sys.stdout.flush()
+
+        self._position += math.floor((self.terminal.length(msg) - 1) / self.width)
         if lf:
             self._position += 1
 
-        print(base.format(t=self.terminal, **kwargs), end="\n" if lf else "")
-        sys.stdout.flush()
-
     def clear_eos(self):
-        print(self.terminal.clear_eos(), end="")
+        print(self.terminal.clear_eos, end="")
 
     @property
     def width(self):
