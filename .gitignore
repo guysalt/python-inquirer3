@@ -11,3 +11,4 @@ venv/
 *.swp
 __pycache__/
 .idea
+build/
