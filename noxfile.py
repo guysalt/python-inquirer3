@@ -1,13 +1,10 @@
 import os
-import shlex
 import shutil
 import sys
 from pathlib import Path
-from textwrap import dedent
 
 import nox
 
-package = "inquirer3"
 python_versions = ["3.11", "3.10", "3.9", "3.8"]
 nox.needs_version = ">= 2021.6.6"
 nox.options.sessions = (
@@ -16,76 +13,6 @@ nox.options.sessions = (
     "tests",
     "docs-build",
 )
-
-
-def activate_virtualenv_in_precommit_hooks(session) -> None:
-    """Activate virtualenv in hooks installed by pre-commit.
-
-    This function patches git hooks installed by pre-commit to activate the
-    session's virtual environment. This allows pre-commit to locate hooks in
-    that environment when invoked from git.
-
-    Args:
-        session: The Session object.
-    """
-    assert session.bin is not None  # nosec
-
-    # Only patch hooks containing a reference to this session's bindir. Support
-    # quoting rules for Python and bash, but strip the outermost quotes so we
-    # can detect paths within the bindir, like <bindir>/python.
-    bindirs = [
-        bindir[1:-1] if bindir[0] in "'\"" else bindir for bindir in (repr(session.bin), shlex.quote(session.bin))
-    ]
-
-    virtualenv = session.env.get("VIRTUAL_ENV")
-    if virtualenv is None:
-        return
-
-    headers = {
-        # pre-commit < 2.16.0
-        "python": f"""\
-            import os
-            os.environ["VIRTUAL_ENV"] = {virtualenv!r}
-            os.environ["PATH"] = os.pathsep.join((
-                {session.bin!r},
-                os.environ.get("PATH", ""),
-            ))
-            """,
-        # pre-commit >= 2.16.0
-        "bash": f"""\
-            VIRTUAL_ENV={shlex.quote(virtualenv)}
-            PATH={shlex.quote(session.bin)}"{os.pathsep}$PATH"
-            """,
-        # pre-commit >= 2.17.0 on Windows forces sh shebang
-        "/bin/sh": f"""\
-            VIRTUAL_ENV={shlex.quote(virtualenv)}
-            PATH={shlex.quote(session.bin)}"{os.pathsep}$PATH"
-            """,
-    }
-
-    hookdir = Path(".git") / "hooks"
-    if not hookdir.is_dir():
-        return
-
-    for hook in hookdir.iterdir():
-        if hook.name.endswith(".sample") or not hook.is_file():
-            continue
-
-        if not hook.read_bytes().startswith(b"#!"):
-            continue
-
-        text = hook.read_text()
-
-        if not any(Path("A") == Path("a") and bindir.lower() in text.lower() or bindir in text for bindir in bindirs):
-            continue
-
-        lines = text.splitlines()
-
-        for executable, header in headers.items():
-            if executable in lines[0].lower():
-                lines.insert(1, dedent(header))
-                hook.write_text("\n".join(lines))
-                break
 
 
 @nox.session(name="pre-commit", python=python_versions[0])
@@ -106,8 +33,6 @@ def precommit(session) -> None:
         "pyupgrade",
     )
     session.run("pre-commit", *args)
-    if args and args[0] == "install":
-        activate_virtualenv_in_precommit_hooks(session)
 
 
 @nox.session(python=python_versions[0])
@@ -151,29 +76,6 @@ def coverage(session) -> None:
         session.run("coverage", "combine")
 
     session.run("coverage", *args)
-
-
-@nox.session(python=python_versions)
-def typeguard(session) -> None:
-    """Runtime type checking using Typeguard."""
-    session.install(".")
-    session.install("pytest", "typeguard", "pygments")
-    session.run("pytest", f"--typeguard-packages={package}", *session.posargs)
-
-
-@nox.session(python=python_versions)
-def xdoctest(session) -> None:
-    """Run examples with xdoctest."""
-    if session.posargs:
-        args = [package, *session.posargs]
-    else:
-        args = [f"--modname={package}", "--command=all"]
-        if "FORCE_COLOR" in os.environ:
-            args.append("--colored=1")
-
-    session.install(".")
-    session.install("xdoctest[colors]")
-    session.run("python", "-m", "xdoctest", *args)
 
 
 @nox.session(name="docs-build", python=python_versions[0])
