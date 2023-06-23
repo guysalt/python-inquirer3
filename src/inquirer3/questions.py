@@ -158,7 +158,6 @@ class List(Question):
         trim_header=True,
         trim_choices=False,
     ):
-
         super().__init__(name, message, choices, default, ignore, validate, other=other, trim_header=trim_header)
         self.carousel = carousel
         self.autocomplete = autocomplete
@@ -183,7 +182,6 @@ class Checkbox(Question):
         trim_header=True,
         trim_choices=False,
     ):
-
         super().__init__(name, message, choices, default, ignore, validate, other=other, trim_header=trim_header)
         self.locked = locked
         self.carousel = carousel

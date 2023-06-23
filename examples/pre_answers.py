@@ -8,7 +8,6 @@ import inquirer3  # noqa
 
 
 if __name__ == "__main__":
-
     questions = [
         inquirer3.Text("user", message="Please enter your github username", validate=lambda _, x: x != "."),
         inquirer3.Password("password", message="Please enter your password"),
