@@ -18,25 +18,27 @@
 
 # python-inquirer3
 
-Collection of common interactive command line user interfaces, based on [Inquirer.js].
+This is a fork of [magmax/python-inquirer]. This one is hopefully more responsive (Issues/PRs/...).
 
-## Goal and Philosophy
+Collection of common interactive command line user interfaces, based on [magmax/python-inquirer].
 
-Born as a [Inquirer.js] clone, it shares part of the goals and philosophy.
+### Goal and Philosophy
 
-So, **Inquirer** should ease the process of asking end user **questions**, **parsing**, **validating** answers, managing **hierarchical prompts** and providing **error feedback**.
+**inquirer3** should ease the process of asking end user **questions**, **parsing**, **validating** answers, managing **hierarchical prompts** and providing **error feedback**.
 
-You can [download the python-inquirer code from GitHub] or [download the wheel from Pypi].
-
-### Platforms support
+## Platforms support
 
 Python-inquirer supports mainly UNIX-based platforms (eq. Mac OS, Linux, etc.). Windows has experimental support, please let us know if there are any problems!
 
 ## Installation
 
+Install the last released version using pip:
+
 ```sh
 pip install inquirer3
 ```
+
+Also, you can [download the python-inquirer code from GitHub] or [download the wheel from Pypi].
 
 ## Documentation
 
@@ -143,17 +145,14 @@ To learn more, see the [Contributor Guide].
 
 ## License
 
-Copyright (c) 2014-2023 Miguel Ángel García ([@magmax_en]), based on [Inquirer.js], by Simon Boudrias ([@vaxilart])
+Copyright (c) 2014-2023 Miguel Ángel García
 
 Distributed under the terms of the [MIT license][license].
 
 <!-- github-only -->
 
 [license]: https://github.com/guysalt/python-inquirer3/blob/main/LICENSE
-[@magmax_en]: https://twitter.com/magmax_en
-[@vaxilart]: https://twitter.com/vaxilart
 [contributor guide]: CONTRIBUTING.md
 [download the python-inquirer code from github]: https://github.com/guysalt/python-inquirer3
-[download the wheel from pypi]: https://pypi.python.org/pypi/inquirer3
-[examples/]: https://github.com/guysalt/python-inquirer3/tree/master/examples
-[inquirer.js]: https://github.com/SBoudrias/Inquirer.js
+[download the wheel from pypi]: https://pypi.org/project/inquirer3/#files
+[magmax/python-inquirer]: https://github.com/magmax/python-inquirer
