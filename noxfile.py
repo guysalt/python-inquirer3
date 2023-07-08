@@ -7,20 +7,8 @@ from pathlib import Path
 from textwrap import dedent
 
 import nox
-
-
-try:
-    from nox_poetry import Session
-    from nox_poetry import session
-except ImportError:
-    message = f"""\
-    Nox failed to import the 'nox-poetry' package.
-
-    Please install it using the following command:
-
-    {sys.executable} -m pip install nox-poetry"""
-    raise SystemExit(dedent(message)) from None
-
+from nox_poetry import Session
+from nox_poetry import session
 
 package = "inquirer3"
 python_versions = ["3.11", "3.10", "3.9", "3.8"]

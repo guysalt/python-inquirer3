@@ -32,11 +32,9 @@ Request features on the [Issue Tracker].
 
 ## How to set up your development environment
 
-You need Python 3.7+ and the following tools:
+You need Python 3.8+ and the following tools:
 
 - [Poetry]
-- [Nox]
-- [nox-poetry]
 
 Install the package with development requirements:
 
@@ -44,8 +42,13 @@ Install the package with development requirements:
 $ poetry install
 ```
 
-You can now run an interactive Python session,
-or the command-line interface:
+You can now activate your virtual development environment:
+
+```sh
+$ poetry shell
+```
+
+Or run an interactive Python session:
 
 ```sh
 $ poetry run python
@@ -53,13 +56,15 @@ $ poetry run python
 
 ## How to test the project
 
-Run the full test suite:
+First activate your virtual environment.
+
+To run the full test suite:
 
 ```sh
 $ nox
 ```
 
-List the available Nox sessions:
+To list the available Nox sessions:
 
 ```sh
 $ nox --list-sessions
