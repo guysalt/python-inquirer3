@@ -1,8 +1,9 @@
 ---
-substitutions:
-  MIT license: |-
-    ```{image} https://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png
-    ```
+myst:
+  substitutions:
+    MIT license: |-
+      ```{image} https://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png
+      ```
 ---
 
 # The MIT License (MIT)

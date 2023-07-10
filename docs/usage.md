@@ -1,13 +1,14 @@
 ---
-substitutions:
-  inquirer theme: |-
-    ```{image} images/inquirer_theme.gif
-    :alt: Example of theme (GreenPassion)
-    ```
-  inquirer themes compare: |-
-    ```{image} images/inquirer_theme-compare.png
-    :alt: Example of theme (GreenPassion)
-    ```
+myst:
+  substitutions:
+    inquirer theme: |-
+      ```{image} images/inquirer_theme.gif
+      :alt: Example of theme (GreenPassion)
+      ```
+    inquirer themes compare: |-
+      ```{image} images/inquirer_theme-compare.png
+      :alt: Example of theme (GreenPassion)
+      ```
 ---
 
 # Usage
