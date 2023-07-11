@@ -17,7 +17,7 @@ installation
 usage
 examples
 contributing
-Code of Conduct <codeofconduct>
+Code of Conduct <CODE_OF_CONDUCT>
 license
 modules
 ```
