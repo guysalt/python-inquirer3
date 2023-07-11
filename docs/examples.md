@@ -1,25 +1,26 @@
 ---
-substitutions:
-  inquirer checkbox: |-
-    ```{image} images/inquirer_checkbox.gif
-    :alt: Example of Checkbox Question
-    ```
-  inquirer confirm: |-
-    ```{image} images/inquirer_confirm.png
-    :alt: Example of Confirm Question
-    ```
-  inquirer list: |-
-    ```{image} images/inquirer_list.png
-    :alt: Example of List Question
-    ```
-  inquirer text: |-
-    ```{image} images/inquirer_text.png
-    :alt: Example of Text Question
-    ```
-  inquirer theme: |-
-    ```{image} images/inquirer_theme.gif
-    :alt: Example of theme (GreenPassion)
-    ```
+myst:
+  substitutions:
+    inquirer checkbox: |-
+      ```{image} images/inquirer_checkbox.gif
+      :alt: Example of Checkbox Question
+      ```
+    inquirer confirm: |-
+      ```{image} images/inquirer_confirm.png
+      :alt: Example of Confirm Question
+      ```
+    inquirer list: |-
+      ```{image} images/inquirer_list.png
+      :alt: Example of List Question
+      ```
+    inquirer text: |-
+      ```{image} images/inquirer_text.png
+      :alt: Example of Text Question
+      ```
+    inquirer theme: |-
+      ```{image} images/inquirer_theme.gif
+      :alt: Example of theme (GreenPassion)
+      ```
 ---
 
 # Examples

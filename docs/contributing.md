@@ -1,7 +1,3 @@
 ```{include} ../CONTRIBUTING.md
----
-end-before: <!-- github-only -->
----
+:relative-docs: docs/
 ```
-
-[code of conduct]: codeofconduct

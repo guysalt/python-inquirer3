@@ -1,13 +1,14 @@
 ---
-substitutions:
-  inquirer theme: |-
-    ```{image} images/inquirer_theme.gif
-    :alt: Example of theme (GreenPassion)
-    ```
-  inquirer themes compare: |-
-    ```{image} images/inquirer_theme-compare.png
-    :alt: Example of theme (GreenPassion)
-    ```
+myst:
+  substitutions:
+    inquirer theme: |-
+      ```{image} images/inquirer_theme.gif
+      :alt: Example of theme (GreenPassion)
+      ```
+    inquirer themes compare: |-
+      ```{image} images/inquirer_theme-compare.png
+      :alt: Example of theme (GreenPassion)
+      ```
 ---
 
 # Usage
@@ -60,6 +61,8 @@ Contains the prompt to be shown to the user, and is **mandatory** too.
 You can use a new style formatted string, using the previous answers, and it will be replaced automatically:
 
 ```python
+from inquirer3 import Text
+
 questions = [
     Text(name='name', message="What's your name?"),
     Text(name='surname', message="What's your surname, {name}")
@@ -75,10 +78,12 @@ def get_message(answers): return str()
 Example:
 
 ```python
+from inquirer3 import Text
+
 def get_message(answers):
     return "What's your name?"
 
-Text(name='name', message= get_message)
+Text(name='name', message=get_message)
 ```
 
 Where `answers` is the dictionary with previous answers.
@@ -87,7 +92,7 @@ If the `message` is too long for the terminal, it will be cut to fit.
 
 ### default
 
-Stores the default value to be used as answer. This allow the user just to press `Enter` to use it. It is optional, using `None` if there is no input and no default value.
+Stores the default value to be used as answer. This allows the user just to press `Enter` to use it. It is optional, using `None` if there is no input and no default value.
 
 As in `message`, you can use a new format string or a function with the sign:
 
@@ -131,15 +136,14 @@ inside the validation function, but be aware that if the validation passes you s
 Example:
 
 ```python
-from inquirer3 import errors
 import random
-
+from inquirer3 import errors, Text
 
 def validation_function(answers, current):
-  if random.random() > 0.5:
-    raise errors.ValidationError('', reason='Sorry, just have bad mood.')
+    if random.random() > 0.5:
+        raise errors.ValidationError('', reason='Sorry, just have bad mood.')
 
-  return True
+    return True
 
 
 Text('nothing', "Moody question", validate=validation_function)
@@ -150,7 +154,7 @@ Text('age', "How old are you?", validate=lambda _, c: 0 <= c < 120)
 
 Questions are statically created and some of them may be optional depending on other answers. This attribute allows to control this by hiding the question.
 
-It's value is `boolean` or a `function` with the sign:
+Its value is `boolean` or a `function` with the sign:
 
 ```python
 def ignore(answers): return boolean()
@@ -161,15 +165,17 @@ where `answers` contains the `dict` of previous answers again.
 Example:
 
 ```python
+import inquirer3
+
 questions = [
-    inquirer.Text("name", message="What's your name?"),
-    inquirer.Text(
+    inquirer3.Text("name", message="What's your name?"),
+    inquirer3.Text(
         "surname",
         message="What's your surname, {name}?",
         ignore=lambda x: x["name"].lower() == "anonymous"
     ),
-    inquirer.Confirm("married", message="Are you married?"),
-    inquirer.Text(
+    inquirer3.Confirm("married", message="Are you married?"),
+    inquirer3.Text(
         "time_married",
         message="How long have you been married?",
         ignore=lambda x: not x["married"]
@@ -180,8 +186,8 @@ questions = [
 ## Path Question
 
 Path Question accepts any valid path which can be both absolute or relative.
-By default it only validates the validity of the path. Except of validation
-it return normalized path and it expands home alias (~).
+By default, it only validates the validity of the path. Except of validation
+it returns normalized path, and it expands home alias (~).
 
 The Path Question have additional arguments for validating paths.
 
@@ -190,21 +196,25 @@ The Path Question have additional arguments for validating paths.
 Validation argument that enables to enforce if the path should be aiming
 to file (`Path.FILE`) or directory (`Path.DIRECTORY`).
 
-By default nothing is enforced (`Path.ANY`).
+By default, nothing is enforced (`Path.ANY`).
 
 ```python
+from inquirer3 import Path
+
 Path('log_file', 'Where should be log files located?', path_type=Path.DIRECTORY)
 ```
 
 ### exists
 
 Validation argument that enables to enforce if the provided path should
-or should not exists. Expects `True` if the path should
-exists, or `False` if the path should not exists.
+or should not exist. Expects `True` if the path should
+exist, or `False` if the path should not exist.
 
-By default nothing is enforced (`None`)
+By default, nothing is enforced (`None`)
 
 ```python
+from inquirer3 import Path
+
 Path('config_file', 'Point me to your configuration file.', exists=True, path_type=Path.File)
 ```
 
@@ -216,6 +226,8 @@ the Question will normalize it to absolute path.
 Expects `bool` value. Default `False`.
 
 ```python
+from inquirer3 import Path
+
 Path('config_file', 'Point me to your configuration file.', normalize_to_absolute_path=True)
 ```
 
@@ -224,6 +236,8 @@ Path('config_file', 'Point me to your configuration file.', normalize_to_absolut
 With this information, it is easy to create a `Question` object:
 
 ```python
+from inquirer3 import Text
+
 Text('name', "What's your name?")
 ```
 
@@ -243,7 +257,7 @@ The last step is to call the _prompter_ With the list of {code}`Question`:
 answers = inquirer.prompt(questions)
 ```
 
-This line will ask the user for information and will store the answeres in a dict, using the question name as **key** and the user response as **value**.
+This line will ask the user for information and will store the answers in a dict, using the question name as **key** and the user response as **value**.
 
 Remember the `prompt` always require a list of `Question` as input.
 
@@ -270,11 +284,13 @@ Result:
 For one-off prompts, you can use the shortcut functions.
 
 ```python
-text = inquirer.text(message="Enter your username")
-password = inquirer.password(message='Please enter your password'),
-choice = inquirer.list_input("Public or private?",
+import inquirer3
+
+text = inquirer3.text(message="Enter your username")
+password = inquirer3.password(message='Please enter your password'),
+choice = inquirer3.list_input("Public or private?",
                               choices=['public', 'private'])
-correct = inquirer.confirm("This will delete all your current labels and "
+correct = inquirer3.confirm("This will delete all your current labels and "
                         "create a new ones. Continue?", default=False)
 ```
 
@@ -292,4 +308,4 @@ The function should return what to replace the entire current input with as a `s
 
 ```
 
-[examples]: examples.html
+[examples]: examples.md
