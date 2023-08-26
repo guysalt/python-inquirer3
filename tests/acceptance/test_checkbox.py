@@ -6,12 +6,7 @@ import pexpect
 from readchar import key
 
 from inquirer3.themes import Default as Theme
-
-
-def send_key(child, eof_string: str, key_to_press: str, times: int = 1):
-    for _ in range(times):
-        child.expect(eof_string, timeout=1)
-        child.send(key_to_press)
+from tests.acceptance.utils import send_key
 
 
 @unittest.skipIf(sys.platform.startswith("win"), "Without Windows")
