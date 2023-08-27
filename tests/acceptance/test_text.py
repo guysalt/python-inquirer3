@@ -1,13 +1,19 @@
-import re
 import sys
 import unittest
 
 import pexpect
 from readchar import key
 
+from tests.acceptance.utils import send_key
 
-@unittest.skipUnless(sys.platform.startswith("lin"), "Linux only")
+
+@unittest.skipIf(sys.platform.startswith("win"), "Without Windows")
 class TextTest(unittest.TestCase):
+    EOF_STRING = ":.*"
+
+    def send_key(self, key_to_press: str, times: int = 1):
+        send_key(self.sut, self.EOF_STRING, key_to_press, times=times)
+
     def setUp(self):
         self.sut = pexpect.spawn("python examples/text.py")
 
@@ -24,26 +30,44 @@ class TextTest(unittest.TestCase):
         self.sut.sendline(phone)
 
     def test_default_input(self):
-        self.set_name()
-        self.set_surname()
-        self.set_phone()
-        self.sut.expect_list(
-            [re.compile(b"'name': 'foo'"), re.compile(b"'surname': 'bar'"), re.compile(b"'phone': '123456789'")],
-            timeout=1,
-        )
+        self.send_key("foo")
+        self.sut.expect("foo.*")
+        self.sut.send(key.ENTER)
+
+        self.send_key("bar")
+        self.sut.expect("bar.*")
+        self.sut.send(key.ENTER)
+
+        self.send_key("123456789")
+        self.sut.expect("123456789.*")
+        self.sut.send(key.ENTER)
+
+        self.sut.expect("{'name': 'foo', 'phone': '123456789', 'surname': 'bar'}.*", timeout=1)
 
     def test_invalid_phone(self):
-        self.set_name()
-        self.set_surname()
-        self.set_phone("abcde")
+        self.send_key("foo")
+        self.sut.expect("foo.*")
+        self.sut.send(key.ENTER)
+
+        self.send_key("bar")
+        self.sut.expect("bar.*")
+        self.sut.send(key.ENTER)
+
+        self.send_key("abcde")
+        self.sut.expect("abcde.*")
+        self.sut.send(key.ENTER)
+
         self.sut.expect("I don't like your phone number!", timeout=1)
-        self.sut.sendline(5 * key.BACKSPACE + "12345")
-        self.sut.expect_list(
-            [re.compile(b"'name': 'foo'"), re.compile(b"'surname': 'bar'"), re.compile(b"'phone': '12345'")], timeout=1
-        )
+        self.send_key(key.BACKSPACE, times=5)
+
+        self.send_key("12345")
+        self.sut.expect("12345.*")
+        self.sut.send(key.ENTER)
+
+        self.sut.expect("{'name': 'foo', 'phone': '12345', 'surname': 'bar'}.*", timeout=1)
 
 
-@unittest.skipUnless(sys.platform.startswith("lin"), "Linux only")
+@unittest.skipIf(sys.platform.startswith("win"), "Without Windows")
 class TextAutocompleteTest(unittest.TestCase):
     def setUp(self):
         self.sut = pexpect.spawn("python examples/text_autocomplete.py")
