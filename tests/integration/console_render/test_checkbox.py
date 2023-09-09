@@ -167,7 +167,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
 
         question = questions.Checkbox(variable, message, choices=choices)
 
-        sut = ConsoleRender(event_generator=stdin)
+        sut = ConsoleRender(event_generator=stdin, raise_keyboard_interrupt=True)
         with self.assertRaises(KeyboardInterrupt):
             sut.render(question)
 

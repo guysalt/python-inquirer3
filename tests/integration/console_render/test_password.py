@@ -72,7 +72,7 @@ class PasswordRenderTest(unittest.TestCase, helper.BaseTestCase):
 
         question = inquirer3.questions.Password(variable, message)
 
-        sut = ConsoleRender(event_generator=stdin)
+        sut = ConsoleRender(event_generator=stdin, raise_keyboard_interrupt=True)
         with self.assertRaises(KeyboardInterrupt):
             sut.render(question)
 

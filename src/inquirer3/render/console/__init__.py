@@ -1,6 +1,8 @@
+import logging
 import math
 import sys
 
+import coloredlogs
 from blessed import Terminal
 
 from inquirer3 import errors
@@ -14,15 +16,19 @@ from inquirer3.render.console._password import Password
 from inquirer3.render.console._path import Path
 from inquirer3.render.console._text import Text
 
+coloredlogs.install()
+logger = logging.getLogger(__name__)
+
 
 class ConsoleRender:
-    def __init__(self, event_generator=None, theme=None, *args, **kwargs):
+    def __init__(self, event_generator=None, theme=None, raise_keyboard_interrupt: bool = False, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._event_gen = event_generator or events.KeyEventGenerator()
         self.terminal = Terminal()
         self._previous_error = None
         self._position = 0
         self._theme = theme or themes.Default()
+        self._raise_keyboard_interrupt = raise_keyboard_interrupt
 
     def render(self, question, answers=None):
         question.answers = answers or {}
@@ -48,6 +54,13 @@ class ConsoleRender:
                 self._print_options(render)
 
                 self._process_input(render)
+
+        except KeyboardInterrupt:
+            if self._raise_keyboard_interrupt:
+                raise
+            print()
+            logger.info("Cancelled by user")
+
         except errors.EndOfInput as e:
             self._go_to_end(render)
             return e.selection

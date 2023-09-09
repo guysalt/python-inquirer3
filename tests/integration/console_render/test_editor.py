@@ -102,7 +102,7 @@ class EditorRenderTest(unittest.TestCase, helper.BaseTestCase):
 
         question = questions.Editor(variable, message)
 
-        sut = ConsoleRender(event_generator=helper.event_factory(*stdin))
+        sut = ConsoleRender(event_generator=helper.event_factory(*stdin), raise_keyboard_interrupt=True)
         with self.assertRaises(KeyboardInterrupt):
             sut.render(question)
         self.assertFalse(edit.called)

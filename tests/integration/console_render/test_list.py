@@ -128,6 +128,6 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
 
         question = questions.List(variable, message)
 
-        sut = ConsoleRender(event_generator=stdin)
+        sut = ConsoleRender(event_generator=stdin, raise_keyboard_interrupt=True)
         with pytest.raises(KeyboardInterrupt):
             sut.render(question)
