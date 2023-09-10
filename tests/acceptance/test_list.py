@@ -12,8 +12,8 @@ from tests.acceptance.utils import send_key
 class ListTest(unittest.TestCase):
     EOF_STRING = "Micro.*"
 
-    def send_key(self, key_to_press: str, times: int = 1):
-        send_key(self.sut, self.EOF_STRING, key_to_press, times=times)
+    def send_key(self, key_to_press: str, times: int = 1, sleep_time: Union[float, int] = 0):
+        send_key(self.sut, self.EOF_STRING, key_to_press, times=times, sleep_time=sleep_time)
 
     def setUp(self):
         self.sut = pexpect.spawn("python examples/list.py")
@@ -33,7 +33,7 @@ class ListTest(unittest.TestCase):
         self.sut.expect("{'size': 'Jumbo'}.*", timeout=1)
 
     def test_out_of_bounds_down(self):
-        self.send_key(key.DOWN, times=10)
+        self.send_key(key.DOWN, times=10, sleep_time=0.1)
         self.send_key(key.ENTER)
         self.sut.expect("{'size': 'Micro'}.*", timeout=1)
 
