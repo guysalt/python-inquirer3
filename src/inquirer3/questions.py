@@ -1,10 +1,8 @@
-"""Module that implements the questions types."""
-from __future__ import annotations
-
 import errno
 import json
 import os
 import sys
+from typing import Hashable, Any, Callable, Union, Optional, List as TList
 
 import inquirer3.errors as errors
 from inquirer3.render.console._other import GLOBAL_OTHER_CHOICE
@@ -111,13 +109,25 @@ class Question:
 class Text(Question):
     kind = "text"
 
-    def __init__(self, name, message="", default=None, autocomplete=None, trim_header=True, **kwargs):
+    def __init__(
+        self,
+        name: Hashable,
+        message: Any = "",
+        default: Any = None,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        show_default: Union[bool, Callable] = False,
+        trim_header: Union[bool, Callable] = True,
+        autocomplete: Optional[Callable] = None,
+    ):
         super().__init__(
-            name,
+            name=name,
             message=message,
             default=str(default) if default and not callable(default) else default,
+            ignore=ignore,
+            validate=validate,
+            show_default=show_default,
             trim_header=trim_header,
-            **kwargs,
         )
         self.autocomplete = autocomplete
 
@@ -125,8 +135,28 @@ class Text(Question):
 class Password(Text):
     kind = "password"
 
-    def __init__(self, name, echo="*", trim_header=True, **kwargs):
-        super().__init__(name, trim_header=trim_header, **kwargs)
+    def __init__(
+        self,
+        name: Hashable,
+        message: Any = "",
+        echo: str = "*",
+        default: Any = None,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        show_default: Union[bool, Callable] = False,
+        trim_header: Union[bool, Callable] = True,
+        autocomplete: Optional[Callable] = None,
+    ):
+        super().__init__(
+            name=name,
+            message=message,
+            default=default,
+            ignore=ignore,
+            validate=validate,
+            show_default=show_default,
+            trim_header=trim_header,
+            autocomplete=autocomplete,
+        )
         self.echo = echo
 
 
@@ -158,7 +188,6 @@ class List(Question):
         trim_header=True,
         trim_choices=False,
     ):
-
         super().__init__(name, message, choices, default, ignore, validate, other=other, trim_header=trim_header)
         self.carousel = carousel
         self.autocomplete = autocomplete
@@ -183,7 +212,6 @@ class Checkbox(Question):
         trim_header=True,
         trim_choices=False,
     ):
-
         super().__init__(name, message, choices, default, ignore, validate, other=other, trim_header=trim_header)
         self.locked = locked
         self.carousel = carousel
@@ -319,7 +347,7 @@ def load_from_dict(question_dict) -> Question:
     return question_factory(**question_dict)
 
 
-def load_from_list(question_list) -> list[Question]:
+def load_from_list(question_list) -> TList[Question]:
     """Load a list of questions from a list of dicts.
 
     It requires the keys 'name' and 'kind' for each dict.
@@ -330,7 +358,7 @@ def load_from_list(question_list) -> list[Question]:
     return [load_from_dict(q) for q in question_list]
 
 
-def load_from_json(question_json) -> list | dict:
+def load_from_json(question_json) -> Union[Question, TList[Question]]:
     """Load Questions from a JSON string.
 
     Returns:
