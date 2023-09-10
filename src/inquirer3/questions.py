@@ -1,10 +1,8 @@
-"""Module that implements the questions types."""
-from __future__ import annotations
-
 import errno
 import json
 import os
 import sys
+from typing import Union, List as TList
 
 import inquirer3.errors as errors
 from inquirer3.render.console._other import GLOBAL_OTHER_CHOICE
@@ -319,7 +317,7 @@ def load_from_dict(question_dict) -> Question:
     return question_factory(**question_dict)
 
 
-def load_from_list(question_list) -> list[Question]:
+def load_from_list(question_list) -> TList[Question]:
     """Load a list of questions from a list of dicts.
 
     It requires the keys 'name' and 'kind' for each dict.
@@ -330,7 +328,7 @@ def load_from_list(question_list) -> list[Question]:
     return [load_from_dict(q) for q in question_list]
 
 
-def load_from_json(question_json) -> list | dict:
+def load_from_json(question_json) -> Union[Question, TList[Question]]:
     """Load Questions from a JSON string.
 
     Returns:
