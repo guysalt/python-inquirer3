@@ -58,6 +58,7 @@ class ConsoleRender:
         except KeyboardInterrupt:
             if self._raise_keyboard_interrupt:
                 raise
+            self.clear_bottombar()
             print()
             logger.info("Cancelled by user")
 
@@ -119,6 +120,9 @@ class ConsoleRender:
     def _relocate_and_clear(self):
         print("\r" + self._position * self.terminal.move_up, end="")
         self.clear_eos()
+        leave_space_for_error = self._position + 1
+        print("\n" * leave_space_for_error, end="")
+        print(self.terminal.move_up * leave_space_for_error, end="")
         self._position = 0
 
     def _go_to_end(self, render):
