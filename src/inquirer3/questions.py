@@ -145,7 +145,6 @@ class Password(Text):
         validate: Union[bool, Callable] = True,
         show_default: Union[bool, Callable] = False,
         trim_header: Union[bool, Callable] = True,
-        autocomplete: Optional[Callable] = None,
     ):
         super().__init__(
             name=name,
@@ -155,7 +154,6 @@ class Password(Text):
             validate=validate,
             show_default=show_default,
             trim_header=trim_header,
-            autocomplete=autocomplete,
         )
         self.echo = echo
 
