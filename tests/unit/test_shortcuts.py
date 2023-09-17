@@ -28,4 +28,7 @@ def test_shortcuts(func, kind, message, render_mock):
     q = func(message, render=render_mock)
 
     assert q.kind == kind
-    assert q.message == message
+    if func == shortcuts.list_input or func == shortcuts.checkbox:
+        assert q.choices == list(message)
+    else:
+        assert q.message == message
