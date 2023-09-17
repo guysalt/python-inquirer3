@@ -173,27 +173,33 @@ class BaseQuestionTests(unittest.TestCase):
 
     def test_factory_list_type(self):
         name = "foo"
-        q = questions.question_factory("list", name)
+        choices = [1, 2]
+        q = questions.question_factory("list", name, choices)
 
         self.assertEqual("list", q.kind)
         self.assertIsInstance(q, questions.List)
         self.assertEqual(name, q.name)
+        self.assertEqual(choices, q.choices)
 
     def test_factory_located_list_type(self):
         name = "ñçÑÇ"
-        q = questions.question_factory("list", name)
+        choices = [1, 2]
+        q = questions.question_factory("list", name, choices)
 
         self.assertEqual("list", q.kind)
         self.assertIsInstance(q, questions.List)
         self.assertEqual(name, q.name)
+        self.assertEqual(choices, q.choices)
 
     def test_factory_checkbox_type(self):
         name = "foo"
-        q = questions.question_factory("checkbox", name)
+        choices = [1, 2]
+        q = questions.question_factory("checkbox", name, choices)
 
         self.assertEqual("checkbox", q.kind)
         self.assertIsInstance(q, questions.Checkbox)
         self.assertEqual(name, q.name)
+        self.assertEqual(choices, q.choices)
 
     def test_load_from_dict_text_type(self):
         name = "foo"

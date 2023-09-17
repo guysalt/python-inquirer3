@@ -21,7 +21,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.List(variable, message, choices=choices)
+        question = questions.List(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         sut.render(question)
@@ -36,7 +36,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.List(variable, message, choices=choices)
+        question = questions.List(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -49,7 +49,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.List(variable, message, choices=choices)
+        question = questions.List(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -74,7 +74,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Number variable"
         choices = list(range(15))
 
-        question = questions.List(variable, message, choices=choices)
+        question = questions.List(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -87,7 +87,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.List(variable, message, choices=choices)
+        question = questions.List(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -100,7 +100,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.List(variable, message, choices=choices, carousel=True)
+        question = questions.List(name=variable, choices=choices, message=message, carousel=True)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -113,7 +113,7 @@ class ListRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.List(variable, message, choices=choices, carousel=True)
+        question = questions.List(name=variable, choices=choices, message=message, carousel=True)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)

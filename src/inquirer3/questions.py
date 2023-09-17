@@ -2,7 +2,7 @@ import errno
 import json
 import os
 import sys
-from typing import Hashable, Any, Callable, Union, Optional, List as TList
+from typing import Hashable, Any, Callable, Union, Optional, List as TList, Iterable
 
 import inquirer3.errors as errors
 from inquirer3.render.console._other import GLOBAL_OTHER_CHOICE
@@ -33,15 +33,15 @@ class Question:
 
     def __init__(
         self,
-        name,
-        message="",
-        choices=None,
-        default=None,
-        ignore=False,
-        validate=True,
-        show_default=False,
-        other=False,
-        trim_header=True,
+        name: Hashable,
+        message: Any = "",
+        choices: Optional[Iterable] = None,
+        default: Any = None,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        show_default: Union[bool, Callable] = False,
+        other: bool = False,
+        trim_header: Union[bool, Callable] = True,
     ):
         self.name = name
         self._message = message
@@ -165,8 +165,23 @@ class Editor(Text):
 class Confirm(Question):
     kind = "confirm"
 
-    def __init__(self, name, default=False, trim_header=True, **kwargs):
-        super().__init__(name, default=default, trim_header=trim_header, **kwargs)
+    def __init__(
+        self,
+        name: Hashable,
+        message: Any = "",
+        default: Any = False,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        trim_header: Union[bool, Callable] = True,
+    ):
+        super().__init__(
+            name=name,
+            message=message,
+            default=default,
+            ignore=ignore,
+            validate=validate,
+            trim_header=trim_header,
+        )
 
 
 class List(Question):
@@ -174,19 +189,30 @@ class List(Question):
 
     def __init__(
         self,
-        name,
-        message="",
-        choices=None,
-        default=None,
-        ignore=False,
-        validate=True,
-        carousel=False,
-        other=False,
-        autocomplete=None,
-        trim_header=True,
-        trim_choices=False,
+        name: Hashable,
+        choices: Iterable,
+        message: Any = "",
+        default: Any = None,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        show_default: Union[bool, Callable] = False,
+        other: bool = False,
+        trim_header: Union[bool, Callable] = True,
+        carousel: bool = False,
+        autocomplete: Optional[Callable] = None,
+        trim_choices: bool = False,
     ):
-        super().__init__(name, message, choices, default, ignore, validate, other=other, trim_header=trim_header)
+        super().__init__(
+            name=name,
+            message=message,
+            choices=choices,
+            default=default,
+            ignore=ignore,
+            validate=validate,
+            show_default=show_default,
+            other=other,
+            trim_header=trim_header,
+        )
         self.carousel = carousel
         self.autocomplete = autocomplete
         self.trim_choices = trim_choices
@@ -197,20 +223,31 @@ class Checkbox(Question):
 
     def __init__(
         self,
-        name,
-        message="",
-        choices=None,
-        locked=None,
-        default=None,
-        ignore=False,
-        validate=True,
-        carousel=False,
-        other=False,
-        autocomplete=None,
-        trim_header=True,
-        trim_choices=False,
+        name: Hashable,
+        choices: Iterable,
+        message: Any = "",
+        default: Any = None,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        show_default: Union[bool, Callable] = False,
+        other: bool = False,
+        trim_header: Union[bool, Callable] = True,
+        locked: Optional[TList] = None,
+        carousel: bool = False,
+        autocomplete: Optional[Callable] = None,
+        trim_choices: bool = False,
     ):
-        super().__init__(name, message, choices, default, ignore, validate, other=other, trim_header=trim_header)
+        super().__init__(
+            name=name,
+            choices=choices,
+            message=message,
+            default=default,
+            ignore=ignore,
+            validate=validate,
+            show_default=show_default,
+            other=other,
+            trim_header=trim_header,
+        )
         self.locked = locked
         self.carousel = carousel
         self.autocomplete = autocomplete
@@ -264,16 +301,28 @@ class Path(Text):
 
     def __init__(
         self,
-        name,
-        default=None,
-        trim_header=True,
-        path_type="any",
-        exists=None,
-        normalize_to_absolute_path=False,
-        **kwargs,
+        name: Hashable,
+        message: Any = "",
+        default: Any = None,
+        ignore: Union[bool, Callable] = False,
+        validate: Union[bool, Callable] = True,
+        show_default: Union[bool, Callable] = False,
+        trim_header: Union[bool, Callable] = True,
+        autocomplete: Optional[Callable] = None,
+        path_type: str = "any",
+        exists: Optional[bool] = None,
+        normalize_to_absolute_path: bool = False,
     ):
-        super().__init__(name, default=default, trim_header=trim_header, **kwargs)
-
+        super().__init__(
+            name=name,
+            message=message,
+            default=default,
+            ignore=ignore,
+            validate=validate,
+            show_default=show_default,
+            trim_header=trim_header,
+            autocomplete=autocomplete,
+        )
         self._path_type = path_type
         self._exists = exists
         self._normalize_to_absolute_path = normalize_to_absolute_path

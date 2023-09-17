@@ -20,7 +20,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         sut.render(question)
@@ -35,7 +35,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -49,7 +49,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -76,7 +76,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Number variable"
         choices = list(range(15))
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -89,7 +89,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -108,7 +108,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -123,7 +123,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -138,7 +138,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, carousel=True)
+        question = questions.Checkbox(name=variable, choices=choices, message=message, carousel=True)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -151,7 +151,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, carousel=True)
+        question = questions.Checkbox(name=variable, choices=choices, message=message, carousel=True)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -165,7 +165,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin, raise_keyboard_interrupt=True)
         with self.assertRaises(KeyboardInterrupt):
@@ -178,7 +178,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -192,7 +192,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -206,7 +206,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -220,7 +220,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -234,7 +234,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -248,7 +248,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -262,7 +262,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -276,7 +276,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -290,7 +290,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -304,7 +304,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -318,7 +318,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices)
+        question = questions.Checkbox(name=variable, choices=choices, message=message)
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -332,7 +332,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, locked=["foo"])
+        question = questions.Checkbox(name=variable, choices=choices, message=message, locked=["foo"])
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -346,7 +346,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, locked=["foo"])
+        question = questions.Checkbox(name=variable, choices=choices, message=message, locked=["foo"])
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -360,7 +360,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, locked=["foo", "bazz"])
+        question = questions.Checkbox(name=variable, choices=choices, message=message, locked=["foo", "bazz"])
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -374,7 +374,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, locked=["fooo"])
+        question = questions.Checkbox(name=variable, choices=choices, message=message, locked=["fooo"])
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
@@ -388,7 +388,7 @@ class CheckboxRenderTest(unittest.TestCase, helper.BaseTestCase):
         variable = "Bar variable"
         choices = ["foo", "bar", "bazz"]
 
-        question = questions.Checkbox(variable, message, choices=choices, locked=["bar"], default=["bar"])
+        question = questions.Checkbox(name=variable, choices=choices, message=message, locked=["bar"], default=["bar"])
 
         sut = ConsoleRender(event_generator=stdin)
         result = sut.render(question)
