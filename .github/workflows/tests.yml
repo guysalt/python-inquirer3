@@ -51,13 +51,13 @@ jobs:
 
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/python-constraints.txt poetry
+          python .github/workflows/pipx_install_helper.py -p poetry
           poetry --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
-          pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
+          python .github/workflows/pipx_install_helper.py -p nox
+          python .github/workflows/pipx_install_helper.py -m inject -p nox-poetry --package-environment nox
           nox --version
 
       - name: Compute pre-commit cache key
@@ -112,13 +112,13 @@ jobs:
 
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/python-constraints.txt poetry
+          python .github/workflows/pipx_install_helper.py -p poetry
           poetry --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
-          pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
+          python .github/workflows/pipx_install_helper.py -p nox
+          python .github/workflows/pipx_install_helper.py -m inject -p nox-poetry --package-environment nox
           nox --version
 
       - name: Download coverage data
