@@ -1,8 +1,6 @@
-import logging
 import math
 import sys
 
-import coloredlogs
 from blessed import Terminal
 
 from inquirer3 import errors
@@ -15,9 +13,6 @@ from inquirer3.render.console._list import List
 from inquirer3.render.console._password import Password
 from inquirer3.render.console._path import Path
 from inquirer3.render.console._text import Text
-
-coloredlogs.install()
-logger = logging.getLogger(__name__)
 
 
 class ConsoleRender:
@@ -59,8 +54,8 @@ class ConsoleRender:
             if self._raise_keyboard_interrupt:
                 raise
             self.clear_bottombar()
-            print()
-            logger.info("Cancelled by user")
+            print("\n", end="\n" if render.title_inline else "")
+            print("Cancelled by user")
 
         except errors.EndOfInput as e:
             self._go_to_end(render)
