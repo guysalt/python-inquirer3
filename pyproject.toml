@@ -25,24 +25,24 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 blessed = "^1.20.0"
-readchar = "^4.0.5"
+readchar = "^4.0.6"
 python-editor = "^1.0.4"
 coloredlogs = "^15.0.1"
 
 [tool.poetry.group.dev.dependencies]
-bandit = "^1.7.5"
+bandit = "^1.7.8"
 flake8 = "^5.0.0"
 flake8-docstrings = "^1.7.0"
-furo = "^2023.5.20"
-isort = "^5.12.0"
-pexpect = "^4.8.0"
+furo = "^2024.4.27"
+isort = "^5.13.2"
+pexpect = "^4.9.0"
 pre-commit = "^3.3.3"
-pre-commit-hooks = "^4.4.0"
+pre-commit-hooks = "^4.6.0"
 pyupgrade = "^3.8.0"
-safety = "^2.3.5"
+safety = "^3.2.0"
 sphinx = "^7.0.1"
 sphinx-autobuild = "^2021.3.14"
-nox = "^2023.4.22"
+nox = "^2024.4.15"
 nox-poetry = "^1.0.3"
 
 [tool.coverage.paths]
