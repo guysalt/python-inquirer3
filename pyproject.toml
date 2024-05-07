@@ -30,7 +30,7 @@ python-editor = "^1.0.4"
 
 [tool.poetry.group.dev.dependencies]
 bandit = "^1.7.8"
-flake8 = "^5.0.0"
+flake8 = "^7.0.0"
 flake8-docstrings = "^1.7.0"
 furo = "^2024.4.27"
 isort = "^5.13.2"
