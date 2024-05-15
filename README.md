@@ -1,20 +1,23 @@
-[![PyPI](https://img.shields.io/pypi/v/inquirer3.svg)][pypi status]
-[![Status](https://img.shields.io/pypi/status/inquirer3.svg)][pypi status]
+<div align="center">
+
+[![PyPI](https://img.shields.io/pypi/v/inquirer3?&color=blue&logo=pypi&logoColor=%23FFFBEF)][pypi status]
+[![Downloads](https://static.pepy.tech/badge/inquirer3?color=green)][pypi downloads]
+[![Read the documentation at https://python-inquirer3.readthedocs.io/](https://img.shields.io/readthedocs/python-inquirer/latest.svg?label=docs)][read the docs]
+
+[![Tests](https://github.com/guysalt/python-inquirer3/workflows/Tests/badge.svg)][tests]
+[![Codecov](https://codecov.io/gh/guysalt/python-inquirer3/branch/main/graph/badge.svg)][codecov]
 [![Python Version](https://img.shields.io/pypi/pyversions/inquirer3.svg)][pypi status]
 [![License](https://img.shields.io/pypi/l/inquirer3.svg)][license]
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
-<br>
-[![Read the documentation at https://python-inquirer3.readthedocs.io/](https://img.shields.io/readthedocs/python-inquirer/latest.svg?label=Read%20the%20Docs)][read the docs]
-[![Tests](https://github.com/guysalt/python-inquirer3/workflows/Tests/badge.svg)][tests]
-[![Codecov](https://codecov.io/gh/guysalt/python-inquirer3/branch/main/graph/badge.svg)][codecov]
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
 
 [pypi status]: https://pypi.org/project/inquirer3/
+[pypi downloads]: https://pepy.tech/project/inquirer3
 [read the docs]: https://python-inquirer3.readthedocs.io/
 [tests]: https://github.com/guysalt/python-inquirer3/actions?workflow=Tests
 [codecov]: https://app.codecov.io/gh/guysalt/python-inquirer3
-[pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black
+
+</div>
 
 # python-inquirer3
 
