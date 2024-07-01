@@ -119,7 +119,7 @@ def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     requirements = session.poetry.export_requirements()
     session.install("safety")
-    session.run("safety", "check", f"--file={requirements}")
+    session.run("safety", "check", f"--file={requirements}", "-i 70612")  # temporary until safety fix this issue
 
 
 @session(python=python_versions)
