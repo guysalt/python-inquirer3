@@ -183,7 +183,7 @@ class ConsoleRender:
 
     @property
     def height(self):
-        return self.terminal.width or 24
+        return self.terminal.height or 24
 
     def trim_str(self, msg: str, extra_after_trimming: str = ""):
         extra_if_long = "..."
